@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-//import { Line } from 'react-chartjs-2';
-import DataContainer from './DataContainer';
 import {Graphs} from './graphs'; 
+import './App.css';
 
-//interface Item {
-  //price: number;
-//}
 
 const App = () => {
   
@@ -70,9 +66,8 @@ const App = () => {
 
 
   return (
-    <div>
-      <h1>Hello</h1>
-      <DataContainer data={messages} />
+    <div className="App-header">
+      <h1>Live Stock Pricing</h1>
       <Graphs data={messages} />
     </div>
   

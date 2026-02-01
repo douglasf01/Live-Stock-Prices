@@ -128,6 +128,7 @@
                 clients.forEach(client => {
                     if (client.readyState === WebSocket.OPEN) {
                         const now = new Date();
+                        //convert to get same date structure as in sql db, easier when creating xaxis ticks in graph
                         const formatedDateTime = now.toISOString().slice(0, 19).replace('T', ' ');
                         client.send(JSON.stringify({ticker: ticker_info.id, price: ticker_info.price, timestamp: formatedDateTime}));
                     }
