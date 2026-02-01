@@ -13,3 +13,22 @@
 # .nfs files are created when an open file is removed but is still being accessed
 .nfs*
 
+### react ###
+.DS_*
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+node_modules
+bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch
+
+#sql
+*.db
+
