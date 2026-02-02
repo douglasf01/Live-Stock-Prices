@@ -2,6 +2,8 @@ import * as React from 'react';
 import { LineChart } from '@mui/x-charts/LineChart';
 import { legendClasses } from '@mui/x-charts/ChartsLegend';
 
+//TODO
+//implement x,y axis scaling with the min and max stock price, could improve the flow of the graph
 
 export function Graphs({data} : any) {
 
@@ -24,8 +26,8 @@ const timestamps = data.map(item => new Date(item.timestamp).getTime());
   ]}
     yAxis = {[{
       
-      tickMinStep: 100,
-      tickSize: 0,
+      //tickMinStep: 100,
+      tickSize: 1,
     
     
     }]}

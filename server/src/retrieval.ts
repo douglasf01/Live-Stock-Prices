@@ -103,7 +103,7 @@
             {console.log("Connection opened");
             
             //insert tickers
-            const subscribeMessage = {'subscribe' : ["BTC-USD"]};
+            const subscribeMessage = {'subscribe' : ["AAPL"]};
             wsYahoo.send(JSON.stringify(subscribeMessage));
 
         });

@@ -6,20 +6,12 @@ import './App.css';
 const App = () => {
   
   const [messages, setMessages] = useState<string[]>([]);
-
-  const removeFirstItem = () => {
-        const newMessages = messages.slice(1);
-        setMessages(newMessages);
-      };
   
   useEffect(() => { 
     const wsLocalClient = new WebSocket('ws://localhost:8080');
 
     wsLocalClient.onmessage = function(event) {
       const data = JSON.parse(event.data);
-      //const plotData = data.map(item => ({
-        //price: item.price
-      //}))
       if (data.type === 'query_result') {
             console.log('Query result:', data.data);
             setMessages(data.data);
@@ -29,7 +21,7 @@ const App = () => {
       setMessages(prevMessages => [...prevMessages, data]);
 
 
-      console.log('All messages: ', messages)}
+    }
     };
 
     wsLocalClient.onopen = function() {
@@ -51,15 +43,12 @@ const App = () => {
 
     };
   }, []);
-/*
+
   useEffect(() => {
     console.log('All messages: ', messages);
-  }, [messages]);
-*/
-  useEffect(() => {
-    console.log('All messages: ', messages);
-    if (messages.length > 21) {
-      removeFirstItem();
+    if (messages.length > 50) {
+      const newMessages = messages.slice(20);
+      setMessages(newMessages)
 
     }
   }, [messages]);
