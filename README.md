@@ -1,4 +1,4 @@
-# Live Stock Price Fetching from Yahoo Finance
+# Live Stock Price Fetching
 
 This project involves fetching live stock prices from Yahoo Finance using their websocket: streamer.finance.yahoo.com. 
 The backend connects to the Yahoo Finance websocket, retrieves data as it is sent, and stores the data in a database using SQLite3. The websocket from Yahoo sends its data in a protobuf format, the necessary information for decoding is included and implemented.
@@ -44,7 +44,6 @@ To run the client grant execute permission to client.sh and execute
 ```sh
 chmod +x client.sh
 ./client.sh
-
 ```
 This will install necessary npm dependencies for the client, and the graph can be inspected at localhost:3000
 BTC-USD is the ticker preconfigured, since it is not dependant on market hours. But each update from the websocket takes approximately 1 minute, so be patient for the graph to be updated.
