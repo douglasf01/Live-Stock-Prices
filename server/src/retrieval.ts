@@ -39,24 +39,14 @@
     }
 
     console.log("Starting the connection");
-    //local websocket, server
     const wssLocal = new WebSocketServer({port: 8080});
     const clients = new Set();
 
-    //let decodedData;
 
-    //websocket to yahoo, client
     const wsYahoo = new WebSocket('wss://streamer.finance.yahoo.com/');
-
-    //websocket to yahoo, client
-    //ws and wss is the protocol for http and https respectively
-    //const wsLocalClient = new WebSocket('ws://localhost:8080');
-
 
     //init for sql db
     const db = await initializeDb();
-
-    //listens from client?
     
     wssLocal.on('connection', function connection(ws) {
     console.log("Frontend connected");
@@ -72,8 +62,7 @@
 
         try {
             const query = JSON.parse(message.toString());
-            //console.log("Parsed query from message ", query);
-            //console.log("sql query", query.sql, " params ", query.params);
+
             if (query.type === 'query') {
             //const db = await openDb();
             const rows = await db.all(query.sql, query.params || []);
