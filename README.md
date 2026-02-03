@@ -21,20 +21,22 @@ Since the database stores all the data, we could implement time series algorithm
 
 
 ## Prerequisites
-Before you begin, ensure you have met the following requirements:
 
-- **Node.js**
+**Node.js** and **npm** is required.
 
 ## Usage
 
+The server and client are built seperately, which allows them to be reused for different purposes.
+
 ### Server
-To run the server grant execute permissions to server.sh and run
+To run the server, grant execute permissions to server.sh and run:
+
 ```sh
 chmod +x server.sh
 ./server.sh
-
 ```
-This will install the necessary node packages and execute the script. An empty SQL database will be created and stock prices stored.
+
+This will install the necessary npm packages and execute the script. An empty SQL database will be created where stock prices will be stored.
 
 ### Client
 
@@ -44,6 +46,6 @@ chmod +x client.sh
 ./client.sh
 
 ```
-This will install necessary dependancies for the client, then the graph can be inspected at localhost:3000
-BTC-USD is the ticker preconfigured, to not be dependant on market hours. But each update from the websocket takes approximately 1 minute each, so be patient for the graph to be updated.
+This will install necessary npm dependancies for the client, and the graph can be inspected at localhost:3000
+BTC-USD is the ticker preconfigured, since it is not dependant on market hours. But each update from the websocket takes approximately 1 minute each, so be patient for the graph to be updated.
 
