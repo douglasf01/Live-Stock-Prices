@@ -7,7 +7,7 @@ A local websocket server is also set up to connect to a React client, where a li
 
 Here is an overview of the connections:
 
-![](scheme.jpg)
+![](screenshot.png)
 
 This project can serve as a starting point for developing various ideas. Since the database stores all the data, we could implement time series algorithms for stock price prediction in the backend (not [HFT](https://en.wikipedia.org/wiki/High-frequency_trading)
 ). Additionally, the client could be enhanced to create a more comprehensive dashboard.
