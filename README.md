@@ -5,7 +5,7 @@ The backend connects to the Yahoo Finance websocket, retrieves data as it is sen
 
 A local websocket server is also set up to connect to a React client, where a line graph is updated in real-time as new stock prices are received. By using a local websocket, we avoid accessing the database for plotting.
 
-An overview of the connections are available below, and a screenshot of the graph can be seen [here](/pics/chart.png).
+An overview of the connections are available below, and a screenshot of the graph can be seen [here](https://codeberg.org/douglasf01/Live-Stock-Prices/src/branch/main/pics/chart.png).
 
 ![](/pics/connections.png)
 
