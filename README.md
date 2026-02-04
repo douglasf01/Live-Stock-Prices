@@ -47,6 +47,7 @@ chmod +x client.sh
 ./client.sh
 ```
 This will install necessary npm dependencies for the client, and the graph can be inspected at localhost:3000
+
 BTC-USD is the ticker preconfigured, since it is not dependant on market hours. But each update from the websocket takes approximately 1 minute, so be patient for the graph to be updated.
 
 Currently, a single ticker is being retrieved. More tickers can be added and prices will be stored in the backend. But the line-graph would need to be adjusted.
