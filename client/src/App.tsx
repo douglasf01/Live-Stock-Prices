@@ -56,7 +56,7 @@ const App = () => {
 
   return (
     <div className="App-header">
-      <h1>Live Stock Pricing</h1>
+      <h1>Live Stock Chart</h1>
       <Graphs data={messages} />
     </div>
   
