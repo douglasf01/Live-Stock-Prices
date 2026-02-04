@@ -3,7 +3,7 @@
 This project involves fetching live stock prices from Yahoo Finance using their websocket: streamer.finance.yahoo.com. 
 The backend connects to the Yahoo Finance websocket, retrieves data as it is sent, and stores the data in a database using SQLite3. The websocket from Yahoo sends its data in a protobuf format, the necessary information for decoding is included and implemented.
 
-A local websocket server is also set up to connect to a React client, where a line graph is updated in real-time as new stock prices are received. By using a local websocket, we avoid accessing the database for plotting, enabling real-time updates.
+A local websocket server is also set up to connect to a React client, where a line graph is updated in real-time as new stock prices are received. By using a local websocket, we avoid accessing the database for plotting.
 
 Here is an overview of the connections:
 
