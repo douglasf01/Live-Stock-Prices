@@ -54,5 +54,6 @@ Currently, a single ticker is being retrieved. More tickers can be added and pri
 ## Future Improvements
 
  - To add more tickers to plot and database easily.
- - Increase dashboard functionality, explore other charts
- - Implement an algorithm which could push some notification of buy/sell
+ - Increase dashboard functionality, explore other charts.
+ - Implement an algorithm which could push some notification of buy/sell,
+ - Fix the double connection on startup.

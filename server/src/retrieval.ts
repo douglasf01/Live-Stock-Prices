@@ -1,5 +1,3 @@
-    //general notes: node.js for backend, server side js execution
-    
     import WebSocket, { WebSocketServer } from 'ws';
     import protobufjs from 'protobufjs';
     const { load } = protobufjs;
@@ -10,7 +8,6 @@
 
     //TODO
     // fix ticker placement, i.e input tickets
-
     async function openDb() {
         return open({
             filename: './tickerdata.db',
@@ -58,24 +55,21 @@
     });
 
     ws.on('message', async function incoming(message){
-        console.log('Received from frontend:', message);
+        //console.log('Received from frontend:', message);
 
         try {
             const query = JSON.parse(message.toString());
 
             if (query.type === 'query') {
-            //const db = await openDb();
             const rows = await db.all(query.sql, query.params || []);
-            console.log("Query result rows:", rows.length);
+            //console.log("Query result rows:", rows.length);
             
             //when recieving the query we can either get ascended rows (from the begning), descended rows (the latest)
-            // but each new datapoint are appended at the end of the list, we need to reverse the descended rows
+            //but each new datapoint are appended at the end of the list, we need to reverse the descended rows
             const reverseRows = rows.reverse();    
 
             const response = JSON.stringify({ type: 'query_result', data: reverseRows });
-                //console.log("sending to the graph: ",response);
                 ws.send(response);
-
             }
         }catch (e) {
             console.error('Error getting db info ', e);
@@ -94,30 +88,27 @@
             //insert tickers
             const subscribeMessage = {'subscribe' : ["BTC-USD"]};
             wsYahoo.send(JSON.stringify(subscribeMessage));
-
         });
 
         wsYahoo.on('message', async function incoming(data) {
             
-            console.log('Received data from the WebSocket server:', data.toString())
+            //console.log('Received data from the WebSocket server:', data.toString())
             let decodedData: string = Buffer.from(data.toString(), 'base64').toString('utf-8');
-            console.log('Decoded data:', decodedData);
+            //console.log('Decoded data:', decodedData);
 
             try {
                 const message = protofile.decode(Buffer.from(data.toString(), 'base64'));
                 const ticker_info = protofile.toObject(message);
-                console.log('Protobuf decoded');
+                //console.log('Protobuf decoded');
                 
                 //if more data is needed this can be added here
                 await insertData(db, { ticker: ticker_info.id, price: ticker_info.price})
                 console.log("Data inserted in db");
 
-
-
                 clients.forEach(client => {
                     if (client.readyState === WebSocket.OPEN) {
                         const now = new Date();
-                        //convert to get same date structure as in sql db, easier when creating xaxis ticks in graph
+                        //convert to get same date structure as in sql db, easier when creating x-axis ticks in graph
                         const formatedDateTime = now.toISOString().slice(0, 19).replace('T', ' ');
                         client.send(JSON.stringify({ticker: ticker_info.id, price: ticker_info.price, timestamp: formatedDateTime}));
                     }

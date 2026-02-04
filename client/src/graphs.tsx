@@ -17,7 +17,6 @@ const timestamps = data.map(item => new Date(item.timestamp).getTime());
   return (
     <LineChart
     xAxis = {[{
-      
       data: timestamps,
       valueFormatter: (timestamp: number) => new Date(timestamp).toLocaleString(),
       tickSize: 0,
@@ -25,11 +24,8 @@ const timestamps = data.map(item => new Date(item.timestamp).getTime());
     },
   ]}
     yAxis = {[{
-      
       //tickMinStep: 100,
       tickSize: 1,
-    
-    
     }]}
 
     series={[
@@ -37,7 +33,6 @@ const timestamps = data.map(item => new Date(item.timestamp).getTime());
           data: prices,
           //if we pass data which only contains one ticker, then this is fine
           label: data[0].ticker,
-
         },
       ]}
       width={600}
