@@ -1,9 +1,9 @@
 # Live Stock Prices
 
-This project involves fetching live stock prices from Yahoo Finance using their websocket: streamer.finance.yahoo.com. 
-The backend connects to the Yahoo Finance websocket, retrieves data as it is sent, and stores the data in a database using SQLite3. The websocket from Yahoo sends its data in a protobuf format, the necessary information for decoding is included and implemented.
+This project involves fetching live stock prices from Yahoo Finance using their WebSocket: streamer.finance.yahoo.com. 
+The backend connects to the Yahoo WebSocket, retrieves data as it is sent, and stores the data in a database using SQLite3. The WebSocket from Yahoo sends its data in a protobuf format, the necessary information for decoding is included and implemented.
 
-A local websocket server is also set up to connect to a React client, where a line graph is updated in real-time as new stock prices are received. By using a local websocket, we avoid accessing the database for plotting.
+A local WebSocket server is initialized to connect to a React client, where a line graph is updated in real-time as new stock prices are received. By using a local WebSocket, we avoid accessing the database for plotting.
 
 An overview of the connections are available below, and a screenshot of the graph can be seen [here](https://codeberg.org/douglasf01/Live-Stock-Prices/src/branch/main/pics/chart.png).
 
@@ -27,7 +27,7 @@ This project can serve as a starting point for developing various ideas. Since t
 
 ## Usage
 
-The server and client are built seperately, which allows them to be reused for different purposes.
+The server and client are built seperately, which allows them to be used for different purposes.
 
 ### Server
 To run the server, grant execute permissions to server.sh and run:
@@ -38,6 +38,7 @@ chmod +x server.sh
 ```
 
 This will install the necessary npm packages and execute the script. An empty SQL database will be created where stock prices will be stored.
+The connection to Yahoo will be established, and a local WebSocket will be started.
 
 ### Client
 
@@ -46,9 +47,11 @@ To run the client grant execute permission to client.sh and execute
 chmod +x client.sh
 ./client.sh
 ```
-This will install necessary npm dependencies for the client, and the graph can be inspected at localhost:3000
+This will install necessary npm dependencies for the client, and the connection to the server will be established.
 
-BTC-USD is the ticker preconfigured, since it is not dependant on market hours. But each update from the websocket takes approximately 1 minute, so be patient for the graph to be updated.
+The graph can be inspected at localhost:3000.
+
+BTC-USD is the ticker preconfigured, since it is not dependant on market hours. But each update from the WebSocket takes approximately 1 minute, so be patient for the graph to be updated.
 
 Currently, a single ticker is being retrieved. More tickers can be added and prices will be stored in the backend. But the line-graph would need to be adjusted.
 
