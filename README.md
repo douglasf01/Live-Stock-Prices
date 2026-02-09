@@ -61,3 +61,4 @@ Currently, a single ticker is being retrieved. More tickers can be added and pri
  - Increase dashboard functionality, explore other charts.
  - Implement an algorithm which could push some notification of buy/sell,
  - Fix the double connection on startup.
+ - Clean the code.
