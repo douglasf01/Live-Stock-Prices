@@ -1,2 +1,0 @@
-1. Create the backend framework for fetching stockprice data to store in sql databse using sqlite
-2. create the ui
