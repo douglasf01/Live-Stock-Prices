@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 600" width="1320" height="600"
+     font-family="'Noto Sans', 'DejaVu Sans', Arial, sans-serif">
+  <defs>
+    <marker id="head-live" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#3fb97f"/>
+    </marker>
+    <marker id="head-req" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 z" fill="#8a8f98"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1320" height="600" rx="14" fill="#121212"/>
+
+  <!-- Title and legend -->
+  <text x="50" y="62" font-size="22" font-weight="700" fill="#f0f0f0">Connection overview</text>
+  <text x="50" y="88" font-size="14" fill="#9a9a9a">How a price travels from Yahoo Finance to the chart</text>
+
+  <g font-size="14" fill="#c8c8c8">
+    <line x1="960" y1="56" x2="1010" y2="56" stroke="#3fb97f" stroke-width="2.5" marker-end="url(#head-live)"/>
+    <text x="1022" y="61">Live price</text>
+    <line x1="960" y1="84" x2="1010" y2="84" stroke="#8a8f98" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#head-req)"/>
+    <text x="1022" y="89">Request and stored history</text>
+  </g>
+
+  <!-- Nodes -->
+  <g>
+    <!-- Yahoo Finance (external service) -->
+    <rect x="50" y="170" width="240" height="130" rx="10" fill="#181818" stroke="#4a4a4a" stroke-width="1.5" stroke-dasharray="7 5"/>
+    <text x="170" y="222" font-size="20" font-weight="700" fill="#f0f0f0" text-anchor="middle">Yahoo Finance</text>
+    <text x="170" y="248" font-size="14" fill="#9a9a9a" text-anchor="middle">WebSocket price stream</text>
+    <text x="170" y="274" font-size="12" fill="#7a7a7a" text-anchor="middle" letter-spacing="1.2">EXTERNAL</text>
+
+    <!-- Server -->
+    <rect x="540" y="170" width="240" height="130" rx="10" fill="#1c1c1c" stroke="#3fb97f" stroke-width="1.5"/>
+    <text x="660" y="222" font-size="20" font-weight="700" fill="#f0f0f0" text-anchor="middle">Server</text>
+    <text x="660" y="248" font-size="14" fill="#9a9a9a" text-anchor="middle">Node.js · TypeScript</text>
+    <text x="660" y="274" font-size="13" fill="#c8c8c8" text-anchor="middle">decode → store → broadcast</text>
+
+    <!-- Browser client -->
+    <rect x="1030" y="170" width="240" height="130" rx="10" fill="#1c1c1c" stroke="#4a4a4a" stroke-width="1.5"/>
+    <text x="1150" y="222" font-size="20" font-weight="700" fill="#f0f0f0" text-anchor="middle">Browser client</text>
+    <text x="1150" y="248" font-size="14" fill="#9a9a9a" text-anchor="middle">React · MUI X Charts</text>
+    <text x="1150" y="274" font-size="13" fill="#c8c8c8" text-anchor="middle">watchlist, chart, stats</text>
+
+    <!-- SQLite -->
+    <rect x="540" y="440" width="240" height="110" rx="10" fill="#1c1c1c" stroke="#4a4a4a" stroke-width="1.5"/>
+    <text x="660" y="488" font-size="20" font-weight="700" fill="#f0f0f0" text-anchor="middle">SQLite</text>
+    <text x="660" y="514" font-size="14" fill="#9a9a9a" text-anchor="middle">every price, per ticker</text>
+  </g>
+
+  <!-- Yahoo <-> Server -->
+  <g>
+    <line x1="298" y1="210" x2="532" y2="210" stroke="#3fb97f" stroke-width="2.5" marker-end="url(#head-live)"/>
+    <text x="415" y="198" font-size="14" fill="#e0e0e0" text-anchor="middle">prices (base64 protobuf)</text>
+
+    <line x1="532" y1="262" x2="298" y2="262" stroke="#8a8f98" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#head-req)"/>
+    <text x="415" y="284" font-size="14" fill="#b0b0b0" text-anchor="middle">subscribe to tickers</text>
+
+    <text x="415" y="330" font-size="12" fill="#7a7a7a" text-anchor="middle" font-family="'DejaVu Sans Mono', monospace">wss://streamer.finance.yahoo.com</text>
+  </g>
+
+  <!-- Server <-> Browser -->
+  <g>
+    <line x1="788" y1="210" x2="1022" y2="210" stroke="#3fb97f" stroke-width="2.5" marker-end="url(#head-live)"/>
+    <text x="905" y="198" font-size="14" fill="#e0e0e0" text-anchor="middle">prices (JSON)</text>
+
+    <line x1="1022" y1="262" x2="788" y2="262" stroke="#8a8f98" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#head-req)"/>
+    <text x="905" y="284" font-size="14" fill="#b0b0b0" text-anchor="middle">history request and reply</text>
+
+    <text x="905" y="330" font-size="12" fill="#7a7a7a" text-anchor="middle" font-family="'DejaVu Sans Mono', monospace">ws://localhost:8080</text>
+  </g>
+
+  <!-- Server <-> SQLite -->
+  <g>
+    <line x1="620" y1="308" x2="620" y2="432" stroke="#3fb97f" stroke-width="2.5" marker-end="url(#head-live)"/>
+    <text x="604" y="376" font-size="14" fill="#e0e0e0" text-anchor="end">save each price</text>
+
+    <line x1="700" y1="432" x2="700" y2="308" stroke="#8a8f98" stroke-width="2" stroke-dasharray="6 5" marker-end="url(#head-req)"/>
+    <text x="716" y="376" font-size="14" fill="#b0b0b0">read recent history</text>
+  </g>
+</svg>
