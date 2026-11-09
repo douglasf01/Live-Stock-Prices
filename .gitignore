@@ -32,3 +32,6 @@ sketch
 #sql
 *.db
 
+
+# build output
+dist

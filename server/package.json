@@ -1,24 +1,27 @@
 {
-  "name": "livestockprice",
+  "name": "live-stock-prices-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "private": true,
+  "description": "Streams live prices from Yahoo Finance, stores them in SQLite and forwards them to local WebSocket clients.",
   "type": "module",
-  "devDependencies": {
-    "@cap-js/sqlite": "^2.1.3",
-    "@types/ws": "^8.18.1",
-    "typescript": "^5.9.3"
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "start": "tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test test/*.test.ts"
   },
   "dependencies": {
     "protobufjs": "^8.0.0",
     "sqlite": "^5.1.1",
     "sqlite3": "^5.1.7",
     "ws": "^8.19.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.0",
+    "@types/ws": "^8.18.1",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
   }
 }
